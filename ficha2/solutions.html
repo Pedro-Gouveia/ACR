@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Demo</title>
+    </head>
+    
+    <body>
+        <div class="display">display</div>
+        <div id="container">          
+            <div class="display">container display</div>
+            <div class="controls"></div>
+        </div>
+
+        <script>
+            //const myElement = document.getElementById('container');
+            //const myElement = document.getElementsByClassName('display');
+            //const myElement = document.querySelector('#container');
+            //const myElement = document.querySelector('div.display');
+            //const myElement = document.querySelector('.display'); //shows the first display it finds
+            const myElement = document.querySelector('#container > .display'); //shows the display inside container
+            //myElement.style.color = 'blue';
+            //myElement.style.cssText = 'color: blue; background: black';
+            myElement.setAttribute('style', 'color: blue; background: black');
+            console.log(myElement);
+
+            const div1 = document.createElement('div');
+            div1.textContent="div content";
+            console.log(div1);
+            document.body.appendChild(div1);
+            //document.insertBefore()
+        </script>
+
+    </body>
+</html>

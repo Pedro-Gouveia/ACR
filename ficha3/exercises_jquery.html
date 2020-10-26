@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="menu" id="mainMenu">
+        <ul>
+            <li><a href="index.html" class="menu-item">GET </a></li>
+            <li><a href="set.html" class="menu-item">SET </a></li>
+            <li><a href="create.html" class="menu-item">Create / remove </a></li>
+            <li><a href="classes.html" class="menu-item">Style classes </a></li>
+            <li><a href="events.html" class="menu-item">Events </a></li>
+            <li><a href="exercises.html" class="menu-item">Exercises </a></li>
+            <li><a href="#" class="menu-item">DOM </a></li>
+        </ul>
+    </div>
+
+    <h2 id="header">DOM Exercises </h2>
+
+    <div class="spaced">
+        <input type="text" id="name" />
+        <button id="btn1">Show .value in console!</button>
+    </div>
+
+    <div id="nameList" class="spaced">
+        <input type="text" id="name2" />
+        <button id="btn2">Add to Names list</button>
+        <h2 id="namesHeader">Names:</h2>
+        <ul>
+            <li>Gonçalo</li>
+            <li>Gonçalo2</li>
+        </ul>
+    </div>
+
+    <span id="result">Result: </span>
+
+    <!-- <script>
+
+    //1
+    document.getElementById("namesHeader").style.color = "blue";
+
+    //2
+    // document.getElementById("mainMenu").classList.remove("menu");
+    // document.getElementById("mainMenu").classList.add("menu-clear");
+    document.getElementById("mainMenu").classList.replace("menu", "menu-clear");
+
+    //3
+    //let body = document.getElementsByTagName("BODY")[0];
+    let addedParagraphText = document.createElement("P");
+    addedParagraphText.innerHTML = "Added Paragraph Text";
+    body.appendChild(addedParagraphText);
+
+    //4
+    let menu = document.getElementById("mainMenu");
+    let elements = menu.querySelectorAll("a");
+    let result = document.getElementById("result");
+    for (let i = 0; i < elements.length; i++) {
+      result.appendChild(elements[i])
+    };
+
+    //5
+    let variavel = document.getElementById("name");
+    let btn1 = document.getElementById("btn1");
+    btn1.onclick = () => { console.log(variavel.value) };
+
+    //6
+    let name2 = document.getElementById("name2");
+    let btn2 = document.getElementById("btn2");
+    let nameList = document.querySelector('#nameList > ul');
+    //console.log(nameList)
+
+    btn2.onclick = () => {
+      let newLI = document.createElement("LI")
+      newLI.textContent = name2.value;
+      nameList.appendChild(newLI);
+    };
+
+  </script> -->
+
+    <script>
+
+        $(document).ready( () => {
+            //1
+            $("#namesHeader").css('color', 'blue');
+
+            //2
+            $(".menu").attr('class', 'menu-clear');
+
+            //3
+            $("p").add("<p>Added paragraph text</p>").appendTo(document.body);
+
+            //4
+            $("#result").add($("a")).appendTo("#result");
+
+
+
+        });
+
+        //5
+        $("#btn1").click( () => {
+            var value = $("#name").val();
+            console.log(value)
+        });
+
+        //6
+        $("#btn2").click( () => {
+            var value = $("#name2").val();
+            var newLi = $("<li></li>").text(value);
+            $("#nameList ul").add($(newLi)).appendTo("#nameList ul");
+        });
+
+
+    </script>
+
+</body>
+
+</html>

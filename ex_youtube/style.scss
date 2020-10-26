@@ -1,0 +1,8 @@
+
+@import "./variables";
+@import "./header";
+
+.contact{
+    @extend header;
+    background: darkred;
+}

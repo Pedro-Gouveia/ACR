@@ -1,0 +1,35 @@
+$borderColor: #CCC;
+
+.box {
+    border: 1px solid $borderColor;
+}
+
+.foo {
+    background: orange;
+    p{
+        color: blue;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
+html {
+    font-size: (1/2em);
+}
+
+.user-dialog-box {
+    border: 10px solid gray;
+    padding: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+@mixin dialog-box($color) {
+    border: 10px solid $color;
+    padding: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+}
+
+.alert-winning-user{
+    @extend .user-dialog-box;
+    @include dialog-box(green);
+}
