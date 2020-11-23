@@ -20,4 +20,10 @@ Route::get('/', function () {
 
 Route::get('/produtos', [ProdutosController::class, 'index']);
 
+Route::get('/produtos/create', [ProdutosCOntroller::class, 'create']);
+
+Route::post('/produtos', [ProdutosController::class, 'store']);
+
 Route::get('/produtos/{id}', [ProdutosController::class, 'show']);
+
+Route::delete('/produtos/{id}', [ProdutosController::class, 'destroy']);

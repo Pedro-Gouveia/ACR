@@ -3,31 +3,49 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Car;
 
 class CarrosController extends Controller
 {
 
-    private $arrayCarros = [
-        ["id" => 1, "marca" => "VW", "modelo" => "Polo", "img" => " ", "preco" => 1000],
-        ["id" => 2, "marca" => "Ferrari", "modelo" => "LaFerrari", "img" => " ", "preco" => 600000],
-        ["id" => 3, "marca" => "Nissan", "modelo" => "Skyline", "img" => " ", "preco" => 400000],
-        ["id" => 4, "marca" => "Toyota", "modelo" => "Supra", "img" => " ", "preco" => 250000]
-    ];
 
     public function index()
     {
-        return view('carros', ['carros' => $this->arrayCarros]);
+        $carros = Car::all();
+        return view('carros', ['carros' => $carros]);
     }
 
     public function show($id)
     {
-        $carroSelectionado = NULL;
-        foreach ($this->arrayCarros as $linhaCarro) {
-            if ($linhaCarro['id'] == $id) {
-                $carroSelectionado = $linhaCarro;
-            }
-        }
+        $carro = Car::findOrFail($id);
 
-        return view('detalhes', ['carro' => $carroSelectionado]);
+        return view('detalhes', ['carro' => $carro]);
+    }
+
+    public function create(){
+        return view('createCar');
+    }
+
+    public function store(){
+        $marca = request('marca');
+        $modelo = request('modelo');
+        $preco = request('preco');
+
+        $carro = new Car();
+
+        $carro->marca = $marca;
+        $carro->modelo = $modelo;
+        $carro->preco = $preco;
+
+        $carro->save();
+
+        return redirect('/carros/create')->with('mssg', 'Carro Adicionado!');
+    }
+
+    public function destroy($id){
+        $carro = Car::findOrFail($id);
+        $carro->delete();
+
+        return redirect('/carros');
     }
 }

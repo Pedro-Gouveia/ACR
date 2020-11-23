@@ -5,8 +5,8 @@
 
     @foreach ($carros as $carro)
     <div class="carro">
-        <a href="/carros/{{ $carro['id'] }}">
-            <h2>{{ $carro['marca'] }} {{ $carro['modelo']}}</h2>
+        <a href="/carros/{{ $carro->id }}">
+            <h2>{{ $carro->marca }} {{ $carro->modelo }}</h2>
         </a>
     </div>
     @endforeach

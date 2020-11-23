@@ -20,7 +20,7 @@
     </head>
     <body>
         <header>
-            
+            <a href="/">HOME</a>
         </header>
 
         <div id="contentArea">

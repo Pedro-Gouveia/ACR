@@ -4,13 +4,15 @@
 
 <h1>Loja de Informatica - Produtos</h1>
 
-@foreach ($produtos as $produto)
+@foreach ($produto as $produto)
     <div class="produto">
-        <a href="/produtos/{{ $produto['id'] }}">
-            <img src="{{ $produto['img'] }}" alt=" ">
-            <h2> {{ $produto['nome'] }}</h2>
+        <a href="/produtos/{{ $produto->id }}">
+            <img src="{{ $produto->url }}" alt=" ">
+            <h2> {{ $produto->nome }}</h2>
         </a>
     </div>
 @endforeach
-    
+<br>
+<br>
+<a href="/produtos/create"><h2>Adicionar Produto</h2></a> 
 @endsection
