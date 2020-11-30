@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -6,7 +6,7 @@
 <div class="intro">
     <img src="/img/loja.jpg" alt=" ">
     <br>
-    <a href="/produtos">Ver Produtos</a>
+    <a href="{{ route('products.index') }}">Ver Produtos</a>
 </div>
     
 @endsection

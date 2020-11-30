@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -6,7 +6,7 @@
 
 @foreach ($produto as $produto)
     <div class="produto">
-        <a href="/produtos/{{ $produto->id }}">
+        <a href="{{ route('products.show', $produto->id) }}">
             <img src="{{ $produto->url }}" alt=" ">
             <h2> {{ $produto->nome }}</h2>
         </a>

@@ -16,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('root');
 
-Route::get('/produtos', [ProdutosController::class, 'index']);
+Route::get('/produtos', [ProdutosController::class, 'index'])->name('products.index');
 
-Route::get('/produtos/create', [ProdutosCOntroller::class, 'create']);
+Route::get('/produtos/create', [ProdutosCOntroller::class, 'create'])->name('products.create')->middleware('auth');
 
-Route::post('/produtos', [ProdutosController::class, 'store']);
+Route::post('/produtos', [ProdutosController::class, 'store'])->name('products.store')->middleware('auth');
 
-Route::get('/produtos/{id}', [ProdutosController::class, 'show']);
+Route::get('/produtos/{id}', [ProdutosController::class, 'show'])->name('products.show');
 
-Route::delete('/produtos/{id}', [ProdutosController::class, 'destroy']);
+Route::delete('/produtos/{id}', [ProdutosController::class, 'destroy'])->name('products.destroy')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -21,11 +21,29 @@ class ProdutosController extends Controller
         return view('createProduct');
     }
 
-    public function store(){
+    public function store(Request $request){
+        $validateData = $request->validate([
+            'name' => 'required',
+            'url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
         $name = request('name');
         $desc = request('desc');
         $url = request('url');
         $preco = request('preco');
+
+        $url = "";
+        if ($request->has('url')){
+            $image = $request->file('url');
+
+            $iname = 'prod' . '_' . time();
+            $folder = '/img/produtos/';
+            $fileName = $iname . '.' . $image->getClientOriginalExtension();
+            $filePath = $folder . $fileName;
+
+            $image->storeAs($folder, $fileName, 'public');
+            $url = "/storage" . $filePath;
+        }
 
         $produto = new Product();
 
