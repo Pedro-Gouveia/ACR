@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/produtos', [ProdutosController::class, 'index'])->name('products.index');
 
+Route::get('/produtos/tipo/{id}', [ProdutosController::class, 'produtosPorTipo'])->name('products.by.tipo');
+
 Route::get('/produtos/create', [ProdutosCOntroller::class, 'create'])->name('products.create')->middleware('auth');
 
 Route::post('/produtos', [ProdutosController::class, 'store'])->name('products.store')->middleware('auth');

@@ -26,6 +26,14 @@
         <label for="name">Preço: </label>
         <input type="text" id="preco" name="preco">
         <br>
+        <br>
+        <label for="tipoProduto">Tipo de produto: </label>
+        <select name="tipoProduto" id="tipoProduto">
+            @foreach ($tipos as $tipo)
+                <option value="{{$tipo->id}}">{{$tipo->nome}}</option>
+            @endforeach
+        </select>
+        <br>
         <input type="submit" value="Criar Produto">
     </form>
     <a href="/produtos">Voltar aos Produtos</a>

@@ -17,20 +17,26 @@ class ProdutosController extends Controller
         return view('detalhes', ['produto' => $produto]);
     }
 
-    public function create(){
-        return view('createProduct');
+    public function produtosPorTipo($id){
+        $tipos = tipo_produto::all();
+        $tipo = tipo_produto::findOrFail($id);
+        $produtos = $tipo->products;
+        return view('produtos', ['produtos' => $produtos, 'tipos' => $tipos, 'actTipo' => $id]);
     }
 
-    public function store(Request $request){
-        $validateData = $request->validate([
-            'name' => 'required',
-            'url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
+    public function create(){
+
+        $tipos = tipo_produto::all();
+        return view('createProduct', ['tipos' => $tipos]);
+    }
+
+    public function store(NewProductRequest $request){
 
         $name = request('name');
         $desc = request('desc');
         $url = request('url');
         $preco = request('preco');
+        $tipo = request('tipoProduto');
 
         $url = "";
         if ($request->has('url')){
@@ -51,6 +57,7 @@ class ProdutosController extends Controller
         $produto->desc = $desc;
         $produto->url = $url;
         $produto->preco = $preco;
+        $produto->tipo_produto_id = $tipo;
 
         $produto->save();
 
