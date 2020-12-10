@@ -27,15 +27,20 @@ class CarrosController extends Controller
     }
 
     public function store(){
+
+
+
         $marca = request('marca');
         $modelo = request('modelo');
         $preco = request('preco');
+        $url = request('url');
 
         $carro = new Car();
 
         $carro->marca = $marca;
         $carro->modelo = $modelo;
         $carro->preco = $preco;
+        $carro->url = $url;
 
         $carro->save();
 

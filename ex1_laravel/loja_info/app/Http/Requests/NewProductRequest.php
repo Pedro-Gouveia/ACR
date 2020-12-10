@@ -13,7 +13,7 @@ class NewProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,21 +25,17 @@ class NewProductRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'  
+            'url' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
-    }
-
-    public function store(NewProductRequest $request){
-
     }
 
     public function messages(){
         return [
-            'name.required' => "O nome do produto é obrigatorio.",
-            'url.required' => "A imagem é obrigatoria.",
-            'url.image' => "O ficheiro tem de ser uma imagem.",
-            'url.mimes' => "O ficheiro tem de de ser jpeg, png, jgp ou gif.",
-            'url.max' => "O tamanho do ficheiro nao pode exceder 2MB.",
+            'name.required' => 'nome obrigatorio',
+            'url.required' => 'img obrigatorio',
+            'url.image' => 'img',
+            'url.mimes' => 'mimes',
+            'url.max' => 'max 2048',
         ];
     }
 }

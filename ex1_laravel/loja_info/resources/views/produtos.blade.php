@@ -16,7 +16,7 @@
         @if(isset($actTipo) && $actTipo == $tipo->id)
             <b>
         @endif
-        <a href="{{route('products.by.tipo')}}">{{$tipo->nome}}</a>
+        <a href="{{route('products.by.tipo', $tipo->id)}}">{{$tipo->nome}}</a>
         @if(isset($actTipo) && $actTipo == $tipo->id)
             </b>
         @endif

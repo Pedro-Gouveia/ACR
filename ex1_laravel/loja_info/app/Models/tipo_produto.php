@@ -12,7 +12,7 @@ class tipo_produto extends Model
     protected $table = 'tipo_produto';
 
     public function products(){
-        return $this->hasMany('App\Models\Product', 'tipo_produto_id', 'id');
         
+        return $this->hasMany('App\Models\Product', 'tipo_produto_id', 'id');  
     }
 }

@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\tipo_produto;
+use App\Http\Requests\NewProductRequest;
 
 class ProdutosController extends Controller
 {
     public function index(){
+        $tipos = tipo_produto::all();
         $produtos = Product::all();
         return view('produtos', ['produto' => $produtos]);
     }
@@ -21,6 +24,7 @@ class ProdutosController extends Controller
         $tipos = tipo_produto::all();
         $tipo = tipo_produto::findOrFail($id);
         $produtos = $tipo->products;
+        //$produtos = tipo_produto::find($id)->products()->get();
         return view('produtos', ['produtos' => $produtos, 'tipos' => $tipos, 'actTipo' => $id]);
     }
 
