@@ -1,0 +1,4 @@
+14/12/2020
+- Criaçao do projeto, Views e ControllersFicheiro
+- Modelos e integração com Bases de dadosFicheiro
+- Validação
