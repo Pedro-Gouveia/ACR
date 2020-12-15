@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Componente;
+use App\Models\Componente_tipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\NewComponenteRequest;
 
 class ComponentesController extends Controller
 {
@@ -19,28 +21,41 @@ class ComponentesController extends Controller
         return view('detalhes', ['componente' => $componente]);
     }
 
-    public function create(){
-        return view ('createComponente');
+    public function componentes_por_tipo($id){
+        $tipos = Componente_tipo::all();
+        $tipo = Componente_tipo::findOrFail($id);
+        $componentes = $tipo->componentes;
+
+        return view('componentes', ['componentes' => $componentes, 'tipos' => $tipos, 'actTipo' => $id]);
     }
 
-    public function store(Request $request){
+    public function create(){
 
-        $validateData = $request->validate([
-            'nome' => 'required',
-            'img' => 'required|image|mimes:jpg,jpeg,png|max2048'
-        ]);
+        $tipos = Componente_tipo::all();
+        return view ('createComponente', ['tipos' => $tipos]);
+    }
+
+    public function edit($id){
+
+        $tipos = Componente_tipo::all();
+        $componente = Componente::findOrFail($id);
+        return view ('createComponente', ['componente' => $componente, 'tipos' => $tipos]);
+    }
+
+    public function store(NewComponenteRequest $request){
 
         $nome = request('nome');
         $desc = request('desc');
         $img = request('img');
         $preco = request('preco');
+        $tipo = request('tipo');
 
         $img = "";
         if ($request->has('img')){
             $image = $request->file('img');
 
             $imageName = 'comp'.'_'.time();
-            $folder = '/img/produtos/';
+            $folder = 'img/componentes/';
             $fileName = $imageName.'.'.$image->getClientOriginalExtension();
             $filePath = $folder.$fileName;
 
@@ -54,6 +69,8 @@ class ComponentesController extends Controller
         $componente->desc = $desc;
         $componente->img = $img;
         $componente->preco = $preco;
+        $componente->componente_tipo_id = $tipo;
+        $componente->created_by = auth()->user()->id;
 
         $componente->save();
 

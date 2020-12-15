@@ -22,9 +22,15 @@ Route::get('/', function () {
 
 Route::get('/componentes', [ComponentesController::class, 'index'])->name('componentes.index');
 
+Route::get('/componentes/create', [ComponentesController::class, 'create'])->name('componentes.create')->middleware('auth');
+
+Route::get('/componentes/tipo/{id}', [ComponentesController::class, 'componentes_por_tipo'])->name('componentes.por.tipo')->middleware('auth');
+
+Route::get('/componentes/edit/{id}', [ComponentesController::class, 'edit'])->name('componentes.edit')->middleware('auth');
+
 Route::get('/componentes/{id}', [ComponentesController::class, 'show'])->name('componentes.show');
 
-Route::get('/componentes/create', [ComponentesController::class, 'create'])->name('componentes.create')->middleware('auth');
+Route::put('/componentes/{id}', [ComponentesController::class, 'updade'])->name('componentes.updade')->middleware('auth');
 
 Route::post('/componentes', [ComponentesController::class, 'store'])->name('componentes.store')->middleware('auth');
 

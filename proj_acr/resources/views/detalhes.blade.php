@@ -18,6 +18,11 @@
             @method('DELETE')
             <button>Eliminar Componente</button>
         </form>
+
+        <form action="{{ route('componentes.edit', $componente->id) }}" method="GET">
+            @csrf
+            <button>Editar Componente</button>
+        </form>
         @endauth
 
         <a href="{{ route('componentes.index') }}">Voltar à Página Anterior</a>
