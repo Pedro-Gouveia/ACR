@@ -30,7 +30,7 @@ Route::get('/componentes/edit/{id}', [ComponentesController::class, 'edit'])->na
 
 Route::get('/componentes/{id}', [ComponentesController::class, 'show'])->name('componentes.show');
 
-Route::put('/componentes/{id}', [ComponentesController::class, 'updade'])->name('componentes.updade')->middleware('auth');
+Route::put('/componentes/{id}', [ComponentesController::class, 'update'])->name('componentes.update')->middleware('auth');
 
 Route::post('/componentes', [ComponentesController::class, 'store'])->name('componentes.store')->middleware('auth');
 

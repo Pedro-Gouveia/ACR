@@ -6,6 +6,7 @@ use App\Models\Componente;
 use App\Models\Componente_tipo;
 use Illuminate\Http\Request;
 use App\Http\Requests\NewComponenteRequest;
+use App\Http\Requests\EditComponenteRequest;
 
 class ComponentesController extends Controller
 {
@@ -32,6 +33,13 @@ class ComponentesController extends Controller
     public function create(){
 
         $tipos = Componente_tipo::all();
+
+        $user = auth()->user();
+        $userComponentes = $user->componentes;
+        if($userComponentes->count() >= 10){
+            return redirect('/home')->with('msg', 'Limite máximo de 10 componentes atingido.');
+        }
+
         return view ('createComponente', ['tipos' => $tipos]);
     }
 
@@ -83,5 +91,42 @@ class ComponentesController extends Controller
         $componente->delete();
 
         return redirect('/componentes');
+    }
+
+    public function update($id, EditComponenteRequest $request){
+        $nome = request('nome');
+        $desc = request('desc');
+        $preco = request('preco');
+        $tipo = request('tipo');
+
+        $changed = request('changed');
+
+        $componente = Componente::findOrFail($id);
+
+        if($changed == 'true'){
+            $img = "";
+            if($request->has('img')){
+                $image = $request->file('img');
+
+                $imageName = 'comp'.'_'.time();
+                $folder = 'img/componentes/';
+                $fileName = $imageName.'.'.$image->getClientOriginalExtension();
+                $filePath = $folder.$fileName;
+
+                $image->storeAs($folder, $fileName, 'public');
+                $img = "/storage/".$filePath;    
+            }
+
+            $componente->img = $img;
+        }
+
+        $componente->nome = $nome;
+        $componente->desc = $desc;
+        $componente->preco = $preco;
+        $componente->componente_tipo_id = $tipo;
+
+        $componente->save();
+
+        return redirect('/componentes/create')->with('msg', 'Componente Atualizado');
     }
 }

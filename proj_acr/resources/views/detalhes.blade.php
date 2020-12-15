@@ -13,6 +13,7 @@
         @endif
 
         @auth
+        @if ($componente->created_by == auth()->user()->id || auth()->user()->IsAdmin)
         <form action="{{ route('componentes.destroy', $componente->id) }}" method="POST">
             @csrf
             @method('DELETE')
@@ -23,6 +24,7 @@
             @csrf
             <button>Editar Componente</button>
         </form>
+        @endif
         @endauth
 
         <a href="{{ route('componentes.index') }}">Voltar à Página Anterior</a>

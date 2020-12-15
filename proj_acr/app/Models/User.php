@@ -40,4 +40,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function componentes(){
+        return $this->hasMany('App\Models\Componente', 'created_by', 'id');
+    }
 }
