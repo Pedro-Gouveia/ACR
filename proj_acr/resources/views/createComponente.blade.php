@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="main">
+    <div class="content">
     <h1>
          @if(isset($componente))
             Editar Componente
@@ -56,7 +56,7 @@
             onchange="document.getElementById('changed').value='true';">
             @if (isset($componente))
             <br>
-                Não escolha imagem caso não a queira alterar.
+                Não escolha uma imagem caso não a queira alterar.
             <br>
             @endif
         <br>
@@ -81,15 +81,18 @@
             @endforeach
         </select>
         <br>
-
-        <input type="submit" 
+        <div class="submitBtn">
+        <input type="submit"
             @if(isset($componente))
                 value="Editar Componente"
             @else
                 value="Criar Componente"
             @endif>
+        </div>
+        
     </form>
 
     <a href="{{ route('componentes.index') }}">Voltar à Página Anterior</a>
-    </div>   
+    </div>
+
 @endsection

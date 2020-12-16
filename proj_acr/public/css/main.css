@@ -23,17 +23,35 @@
     font-weight: bold;
 }
 
-.main{
+.content{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.main label{
+.content label{
     width: 150px;
 }
 
-.main input, select{
+.content input, select{
     width: 200px;
+}
+
+.content h2, h3, h4, button, a{
+    margin-top: 10px;
+}
+
+.content button{
+    width: 200px;
+}
+
+.content img{
+    border: 1px solid black;
+}
+
+.submitBtn{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 

@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>HOME</h1>
-
-    <a href="{{ route('componentes.index') }}">Ver Componentes</a>
+<div class="content">
+    <img src="\img\banner.jpg" alt="banner" style="width:75%">
+    <a href="{{ route('componentes.index') }}" style="font-size: 25px">Ver Componentes</a>
+</div>
 @endsection
