@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="main">
     <h1>
          @if(isset($componente))
             Editar Componente
@@ -54,7 +55,9 @@
         <input type="file" id="img" name="img"
             onchange="document.getElementById('changed').value='true';">
             @if (isset($componente))
-                (???)
+            <br>
+                Não escolha imagem caso não a queira alterar.
+            <br>
             @endif
         <br>
 
@@ -67,7 +70,7 @@
         <br>
 
         <label for="tipo">Tipo de Componente: </label>
-        <select name="tipo" id="tipo">
+        <select name="tipo" id="tipo" class="inputTipo">
             @foreach ($tipos as $tipo)
                 <option value="{{ $tipo->id }}"
                     @if (isset($componente) && $componente->componente_tipo_id == $tipo->id)
@@ -88,5 +91,5 @@
     </form>
 
     <a href="{{ route('componentes.index') }}">Voltar à Página Anterior</a>
-        
+    </div>   
 @endsection

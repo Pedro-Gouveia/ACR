@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>COMPONENTES</h1>
 
-    {{-- <div class="tipos">
+    {{-- <div>
         @if(!isset($actTipo))
             <b>
         @endif
@@ -23,12 +22,14 @@
         @endforeach
     </div> --}}
 
+    <div class="componentes">
     @foreach ($componentes as $componente)
-        <div class="componente">
-            <a href="{{ route('componentes.show', $componente->id) }}">
-                <img src="{{ $componente->img }}">
-                <h2>{{ $componente->nome }}</h2>
-            </a>
-        </div>
+        
+        <a class="componenteBorder" href="{{ route('componentes.show', $componente->id) }}">
+            <img class="componente" src="{{ $componente->img }}">
+            <h2>{{ $componente->nome }}</h2>
+        </a>
+        
     @endforeach
+    </div>
 @endsection
