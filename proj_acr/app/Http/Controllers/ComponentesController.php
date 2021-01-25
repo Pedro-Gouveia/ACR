@@ -30,6 +30,7 @@ class ComponentesController extends Controller
         return view('componentes', ['componentes' => $componentes, 'tipos' => $tipos, 'actTipo' => $id]);
     }
 
+    //TODO max componentes
     public function create(){
 
         $tipos = Componente_tipo::all();
