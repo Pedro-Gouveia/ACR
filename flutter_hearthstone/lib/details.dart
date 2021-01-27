@@ -1,15 +1,18 @@
-import 'package:flutter/material.dart';
+class Details {
+  String cardId;
+  String name;
+  String cardSet;
+  String type;
+  String text;
+  String playerClass;
 
-class Details extends StatefulWidget {
-  @override
-  _Details createState() => _Details();
 
-}
-
-class _Details extends State<Details> {
-  @override
-  Widget build(BuildContext context)
-  {
-    return Container();
-  }
+  Details({
+    this.cardId,
+    this.name,
+    this.cardSet,
+    this.type,
+    this.text,
+    this.playerClass
+  });
 }

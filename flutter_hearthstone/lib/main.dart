@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hearthstone/details.dart';
+import 'package:flutter_hearthstone/set_details.dart';
 import 'package:flutter_hearthstone/loading.dart';
 import 'package:flutter_hearthstone/set_card.dart';
 import 'package:flutter_hearthstone/globals.dart';
@@ -10,11 +10,11 @@ void main() {
     routes: {
       '/': (context) => Loading(),
       '/Cards': (context) => SetCard(),
-      //'/Details': (context) => Details(),
-      /*'/LoadDetails': (context) {
+      '/Details': (context) => SetDetails(),
+      '/LoadDetails': (context) {
         Globals.nextRoute = '/Details';
         return Loading();
-      }*/
+      }
     }
   ));
 }
