@@ -1,18 +1,17 @@
 class Details {
   String cardId;
-  String name;
   String cardSet;
   String type;
-  String text;
+  //String text;
   String playerClass;
-
+  String img;
 
   Details({
     this.cardId,
-    this.name,
     this.cardSet,
     this.type,
-    this.text,
-    this.playerClass
+    //this.text,
+    this.playerClass,
+    this.img
   });
 }

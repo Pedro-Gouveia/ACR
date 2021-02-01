@@ -7,7 +7,7 @@ class DetailsWidget extends StatelessWidget {
   DetailsWidget({
     this.details
   });
-
+  
   @override
   Widget build(BuildContext context)
   {
@@ -15,18 +15,9 @@ class DetailsWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("${this.details.name}",
-                style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5,
+            Expanded (child: Image.network("${this.details.img}"))
+            ,
+            SizedBox(height: 5,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -53,17 +44,6 @@ class DetailsWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text("Type: ${this.details.type}",
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.black
-                  )),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding:const EdgeInsets.all(8.0),
-              child: Text("Ability: ${this.details.text}",
                   style: TextStyle(
                       fontSize: 24,
                       color: Colors.black

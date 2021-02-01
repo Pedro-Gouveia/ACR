@@ -17,7 +17,7 @@ class Service {
       return;
     }
 
-    String route = Globals.apiUrl + "/cards";
+    String route = Globals.apiUrl + "/cards?collectible=1";
     Response response = await get(route, headers: Globals.apiHeaders);
 
     Map rawData = jsonDecode(response.body);
@@ -32,6 +32,24 @@ class Service {
     }
   }
 
+  /*
+  String removeTags(text){
+    String str = "";
+    if (text != null) {
+      for (int i = 0; i < text.length; i++) {
+        if (text[i] != '<') {
+          str += text[i];
+        } else {
+          while (text[i] != '>') {
+            i++;
+          }
+        }
+      }
+      return str;
+    }
+    return str = "This card has no ability.";
+  }
+  */
 
   Future<void> getDetails() async {
 
@@ -48,14 +66,12 @@ class Service {
 
     this.details = Details(
         cardId: detailsData['cardId'],
-        name: detailsData['name'],
         cardSet: detailsData['cardSet'],
         type: detailsData['type'],
-        text: detailsData['text'],
-        playerClass: detailsData['playerClass']
+        //text: removeTags(detailsData['text']),
+        playerClass: detailsData['playerClass'],
+        img: detailsData['img']
     );
-
   }
-
 
 }
