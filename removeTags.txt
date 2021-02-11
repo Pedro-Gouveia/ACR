@@ -1,0 +1,19 @@
+public class Main
+{
+	public static void main(String[] args) {
+	    String str = "<b>text</b>";
+	    String newStr = "";
+	    
+	    for (int i = 0; i < str.length() ; i++ ) {
+	        if (str.charAt(i) != '<'){
+	            newStr += str.charAt(i);
+	        } else {
+	            while (str.charAt(i) != '>'){
+	                i++;
+	            }
+	        }
+	    }
+	    
+		System.out.println(newStr);
+	}
+}
